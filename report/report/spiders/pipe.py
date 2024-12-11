@@ -16,12 +16,11 @@ class PipeSpider(scrapy.Spider):
         yield SeleniumRequest(url=url, callback=self.parse_page)
 
     def parse_page(self, response: scrapy.http.Response):
-       total_pages = 3 # find total pages number in first page
-       for page in range(2, total_pages):
-           url = 'https://evraz.market/metalloprokat/listy/list_goryachekatanyy_g_k/' + str(page)  # form page url 
+       total_pages = 5 # find total pages number in first page
+       for page in range(1, total_pages):
+           url = 'https://evraz.market/metalloprokat/listy/list_goryachekatanyy_g_k/?PAGEN_4=' + str(page)  # form page url 
            yield SeleniumRequest(url=url, callback=self.parse)
 
-       yield from self.parse(response)
 
     def parse(self, response: scrapy.http.Response):
         driver: Chrome = response.request.meta['driver']

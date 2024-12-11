@@ -65,7 +65,9 @@ SELENIUM_DRIVER_NAME = 'chrome'
 SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
 SELENIUM_DRIVER_ARGUMENTS=['--headless']
 DOWNLOADER_MIDDLEWARES = {'scrapy_selenium.SeleniumMiddleware': 800,
-                              'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,}
+                          
+                                'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+                                'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
